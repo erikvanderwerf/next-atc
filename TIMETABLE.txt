@@ -1,0 +1,17 @@
+// Directions
+// Flight Plans are created using a space-deliminated text file. The segments
+// for flight plans are as follows...
+//
+// 0	Header+Time
+// 1	Minutes to departure
+// 2	Departure Airport
+// 3	Arrival Airport
+// 4	Type
+// 5	Airline
+// 6	Callsign
+
+T10000 01 KDEN KCOS PA32 PVT N9636K
+T10000 01 KDEN KBOS B738 DAL DAL1
+T10000 01 KDEN KCOS B738 DAL DAL2
+T10001 01 KDEN KCOS PA32 PVT N929CT
+T10001 01 KDEN KBOS B738 DAL DAL150

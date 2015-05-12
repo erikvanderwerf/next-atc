@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+Note: Does nothing right now. Simulation currently operated in windowed mode 
+with set display tags.
+
+<settings>
+
+	<resolution width="1920" height="1080" fullscreen="1"></resolution>
+	<radar refresh="0">
+		<tag text="{C} {M}"></tag>
+		<tag text="{S} {Q}{A}"></tag>
+	</radar>
+</settings>
