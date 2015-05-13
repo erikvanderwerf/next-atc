@@ -1,7 +1,7 @@
 package server;
 
+import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +15,9 @@ public class Server implements Runnable {
 	private volatile boolean running;
 	
 	List<Aircraft> aircraft;
-	List<Type> types;
 	
 	Map<String, Object> settings;
+	Map<String, Type> types;
 	
 	private Server(List<String> strings) {
 		settings = new HashMap<>();
@@ -27,11 +27,16 @@ public class Server implements Runnable {
 			settings.put(strings.get(i), strings.get(i + 1));
 		}
 		
-		types = Type.loadTypes((String) settings.get("location"));
+		try {
+			types = Type.loadTypes((String) settings.get("location"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void setDefaultSettings() {
 		settings.put("location", "");
+		settings.put("timestep", 1f);
 	}
 
 	public static short create(List<String> strings) {
@@ -62,10 +67,11 @@ public class Server implements Runnable {
 			running = false;
 		}
 	}
-
-	public Map<? extends String, ? extends UIAction> getCommands() {
-		Map<String, ? extends UIAction> commands = new HashMap<>();
-		
+	
+	
+	public Map<? extends String, UIAction> getCommands() {
+		Map<String, UIAction> commands = new HashMap<>();
+		commands.put("add", new Add());
 		return commands;
 	}
 
@@ -76,7 +82,16 @@ public class Server implements Runnable {
 	private class Add implements UIAction {
 		@Override
 		public void execute(PrintStream output, List<String> words) {
-			
+			output.println(words);
+			if (words.size() == 1) {
+				//TODO Print instructions
+			} else if (words.get(1).equals("aircraft")) {
+				Type type = types.get(words.get(2));
+				Aircraft aircraft = new Aircraft(type);
+				Server.this.aircraft.add(aircraft);
+			} else {
+				output.println("Add Command not valid");
+			}
 		}
 		
 	}

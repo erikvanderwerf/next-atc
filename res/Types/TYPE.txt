@@ -1,0 +1,35 @@
+General
+- 1:	ICAO
+- 2:	Wingspan (m)
+- 3:	Length (m)
+- 4:	Req Taxiway Width (m)
+- 5:	Dry Weight (kg)
+- 6:	Max Nose Wheel Rotation
+- 7:	Max Bank
+
+Thrust
+- 1:	Number of Engines
+- 2:	Thrust per Engine (N)
+- 3:	Engine response time (%/s)
+- 4:	Idle N1
+
+Flap Setting
+- 1:	Flap Degree
+- 2:	Maximum Speed (kts)
+- 3:	Additional Lift (% of flaps-0)
+
+T1 B738 34 40 6 41145 70 35
+T2 2  121400 20 20
+T3 1  250 101
+T3 2  250 103
+T3 5  250 107
+T3 10 215 113
+T3 15 205 120
+T3 20 190 126
+T3 30 185 140
+T3 40 162 150
+
+T1 PA32 10 10 2 912 50 45
+T2 1 912 40 5
+
+/T1 B744 64 23 257997 165107 20 0.04 0.95
